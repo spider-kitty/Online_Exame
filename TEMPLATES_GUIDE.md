@@ -85,7 +85,7 @@ The main `urls.py` now includes all app URLs:
 ```python
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('accounts/', include('accounts.urls')),
+   # path('accounts/', include('accounts.urls')),
     path('exams/', include('exams.urls')),
     path('questions/', include('questions.urls')),
     path('submissions/', include('submissions.urls')),
