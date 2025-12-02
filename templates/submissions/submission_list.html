@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Submission List{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Submission List</h1>
+
+<a class="btn btn-primary mb-3" href="/submissions/create/">Create New Submission</a>
+
+{% if object_list %}
+    <ul class="list-group">
+        {% for submission in object_list %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ submission }}</strong>
+                </div>
+                <div>
+                    <a class="btn btn-sm btn-outline-secondary"
+                       href="/submissions/{{ submission.pk }}/">View</a>
+                    <a class="btn btn-sm btn-outline-primary"
+                       href="/submissions/{{ submission.pk }}/update/">Edit</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No submissions found.</p>
+{% endif %}
+{% endblock %}

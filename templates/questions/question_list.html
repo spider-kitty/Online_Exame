@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Questions{% endblock %}
+{% block hero_title %}Questions{% endblock %}
+{% block hero_subtitle %}Browse and manage all questions in the system.{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="mb-0">Question List</h2>
+    <a class="btn btn-primary" href="/questions/create/">+ New Question</a>
+</div>
+
+{% if questions %}
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Exam</th>
+                    <th scope="col">Text</th>
+                    <th scope="col">Marks</th>
+                    <th scope="col" class="text-end">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for question in questions %}
+                    <tr>
+                        <td>{{ question.id }}</td>
+                        <td>{{ question.exam }}</td>
+                        <td>{{ question.text|truncatechars:80 }}</td>
+                        <td>{{ question.marks }}</td>
+                        <td class="text-end">
+                            <a class="btn btn-sm btn-outline-secondary"
+                               href="/questions/{{ question.pk }}/">View</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <p class="text-muted mb-0">No questions found yet. Click “New Question” to add one.</p>
+{% endif %}
+{% endblock %}

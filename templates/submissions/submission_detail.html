@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Submission Detail{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Submission Detail</h1>
+
+<h3>{{ object }}</h3>
+
+<p>Show submission fields here (exam, student, answers, timestamp, etc.).</p>
+
+<div class="mt-3">
+    <a class="btn btn-secondary" href="/submissions/">Back to list</a>
+    <a class="btn btn-primary" href="/submissions/{{ object.pk }}/update/">Edit submission</a>
+</div>
+{% endblock %}
