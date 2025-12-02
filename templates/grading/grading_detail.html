@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Grading Detail{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Grading Detail</h1>
+
+<h3>{{ object }}</h3>
+
+<p>Show grade, feedback, related submission, etc. using your Grading model fields.</p>
+
+<div class="mt-3">
+    <a class="btn btn-secondary" href="/grading/">Back to list</a>
+    <a class="btn btn-primary" href="/grading/{{ object.pk }}/update/">Update grading</a>
+</div>
+{% endblock %}

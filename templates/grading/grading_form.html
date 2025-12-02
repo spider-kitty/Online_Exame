@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Grading Form{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Grading Form</h1>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="/grading/" class="btn btn-secondary">Cancel</a>
+</form>
+{% endblock %}

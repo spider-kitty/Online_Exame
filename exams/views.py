@@ -3,6 +3,12 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.urls import reverse_lazy
 from .models import Exam
+from django.contrib.auth.views import LoginView
+
+class ExamLoginView(LoginView):
+    template_name = 'exams/login.html'  
+    success_url = '/exams/'
+
 
 class ExamListView(LoginRequiredMixin, ListView):
     """View to list all exams"""

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Grading List{% endblock %}
+
+{% block content %}
+<h1 class="mb-3">Grading List</h1>
+
+{% if object_list %}
+    <ul class="list-group">
+        {% for grade in object_list %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ grade }}</strong>
+                </div>
+                <div>
+                    <a class="btn btn-sm btn-outline-secondary"
+                       href="/grading/{{ grade.pk }}/">View</a>
+                    <a class="btn btn-sm btn-outline-primary"
+                       href="/grading/{{ grade.pk }}/update/">Update</a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No grading records found.</p>
+{% endif %}
+{% endblock %}
