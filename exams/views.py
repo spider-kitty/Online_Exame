@@ -9,8 +9,8 @@ class ExamLoginView(LoginView):
     template_name = 'exams/login.html'  
     success_url = '/exams/'
 
-
-class ExamListView(LoginRequiredMixin, ListView):
+class ExamListView(#LoginRequiredMixin,
+ListView):
     """View to list all exams"""
     model = Exam
     template_name = 'exams/exam_list.html'
@@ -22,7 +22,8 @@ class ExamListView(LoginRequiredMixin, ListView):
         queryset = Exam.objects.filter(is_active=True)
         return queryset.order_by('-created_at')
 
-class ExamDetailView(LoginRequiredMixin, DetailView):
+class ExamDetailView(#LoginRequiredMixin,
+ DetailView):
     """View to display a single exam"""
     model = Exam
     template_name = 'exams/exam_detail.html'
@@ -35,7 +36,8 @@ class ExamDetailView(LoginRequiredMixin, DetailView):
         context['questions'] = exam.questions.all()
         return context
 
-class ExamCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class ExamCreateView(#LoginRequiredMixin,UserPassesTestMixin,
+ CreateView):
     """View to create a new exam"""
     model = Exam
     template_name = 'exams/exam_form.html'
